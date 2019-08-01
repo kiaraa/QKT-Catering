@@ -62,8 +62,11 @@ public class Tester2 {
 		}
 		else if (choice.equals("Check")) {
 			System.out.println("Enter your check number!");
-			scan.nextDouble();
-			double chkNum = scan.nextDouble();
+			int chkNum = scan.nextInt();
+			scan.nextLine(); //garbage line
+			
+			Receipt receipt = new CheckReceipt(CustoList, chkNum);
+			receipt.printReceipt();
 		}
 		else if (choice.equals("Cash")) {
 			System.out.println("How much money are you paying");
