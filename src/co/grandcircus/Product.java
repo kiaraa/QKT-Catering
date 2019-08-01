@@ -13,6 +13,7 @@ public class Product {
 		this.description = description;
 		this.price = price;
 		
+	
 	}
 
 	public String getName() {
@@ -49,6 +50,8 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product: " + name   + ", Price: " + price;
+		return "Product: " + name   + ", Price" + price;
 	} 
+	
+	
 }
