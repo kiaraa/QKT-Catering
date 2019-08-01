@@ -1,6 +1,7 @@
 package co.grandcircus;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Tester {
 
@@ -11,7 +12,7 @@ public class Tester {
 		for (Product prod : prodList) {
 			System.out.println(prod);
 		}
-
+		
+		
 	}
-
-}
+}	
