@@ -8,9 +8,11 @@ public class Tester {
 		Inventory inv = new Inventory();
 		ArrayList<Product> prodList = new ArrayList<>();
 		prodList = inv.readFromFile();
-		for (Product prod : prodList) {
-			System.out.println(prod);
-		}
+		//for (Product prod : prodList) {
+		//	System.out.println(prod);
+		//}
+		Receipt receipt = new Receipt(prodList);
+		receipt.printReceipt();
 
 	}
 
