@@ -19,6 +19,7 @@ public class Tester2 {
 		
 			
 		
+		ArrayList<Product> CustoList = new ArrayList<>();
 		Object condition = "Y";
 		do {
 			Inventory inv = new Inventory();
@@ -35,7 +36,6 @@ public class Tester2 {
 			
 			int prodItem = scan.nextInt();
 			scan.nextLine(); //garbage line
-			ArrayList<Product> CustoList = new ArrayList<>();
 			Product prodLocation = prodList.get(prodItem -1);
 			CustoList.add(prodLocation);
 		
@@ -44,25 +44,28 @@ public class Tester2 {
 		} while (condition.equals("Y"));
 		
 		System.out.println("What is your method of payment? \n1. Card \n2. Check \n3. Cash");
-		scan.next();
+		String choice = scan.next();
 		
-		if (scan.equals("Card")) {
+		if (choice.equals("Card")) {
 			System.out.println("Enter Card number!");
-			scan.nextDouble();
-			double cNum = scan.nextDouble();
+			int cNum = scan.nextInt();
+			scan.nextLine();
 			System.out.println("Enter expiration date!");
-			scan.nextDouble();
-			double cDate = scan.nextDouble();
+			String cDate = scan.next();
+			scan.nextLine();
 			System.out.println("Enter your card CW!");
-			scan.nextInt();
 			int cCW = scan.nextInt();
+			scan.nextLine();
+			
+			Receipt receipt = new CardReciept(CustoList, cNum,cDate, cCW);
+			receipt.printReceipt();
 		}
-		else if (scan.equals("Check")) {
+		else if (choice.equals("Check")) {
 			System.out.println("Enter your check number!");
 			scan.nextDouble();
 			double chkNum = scan.nextDouble();
 		}
-		else if (scan.equals("Cash")) {
+		else if (choice.equals("Cash")) {
 			System.out.println("How much money are you paying");
 			scan.nextDouble();
 			double cash = scan.nextDouble();

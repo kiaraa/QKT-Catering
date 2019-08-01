@@ -40,7 +40,7 @@ public class CardReciept extends Receipt {
 	@Override
 	public void printReceipt (){
 		 super.printReceipt();
-		 System.out.println(cardNum + cardExpire + cardCVV);
+		 System.out.println(cardNum + " " + cardExpire + " " + cardCVV);
 	}
 	
 	
