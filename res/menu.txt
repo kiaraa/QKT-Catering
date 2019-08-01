@@ -1,0 +1,12 @@
+Hushpuppies,Appetizer,Fried balls of spiced cornbread,79.99
+Mac'n'Cheese,Side,Rich and creamy mac'n'cheese,149.99
+Greens,Side,Smoky collard greens,99.99
+Porkchops,Entree,Pan-fried porkchops,179.99
+Smothered Porkchops,Entree,Our pan-fried porkchops smothered in gravy,199.99
+Chicken,Entree,Assorted fried chicken pieces,159.99
+Baked Beans,Side,Baked beans with smoky bacon,119.99
+Cheesecake,Dessert,Creamy homemade cheesecake,99.99
+Peach Cobbler,Dessert,Classic peach cobbler,89.99
+Pound Cake,Dessert,Homemade 7Up poundcake,94.99
+Banana Pudding,Dessert,Made with Nilla wafers,89.99
+Wings,Appetizer,Fried chicken wings,79.99
