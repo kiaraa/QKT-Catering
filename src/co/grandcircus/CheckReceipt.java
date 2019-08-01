@@ -1,20 +1,19 @@
 package co.grandcircus;
 
-public class CheckReceipt extends Product {
+import java.util.ArrayList;
+
+    public class CheckReceipt extends Receipt {
 	int checkNumber;
 
-	
-	public CheckReceipt(String name, String category, String description, double price) {
-		super(name, category, description, price);
-		// TODO Auto-generated constructor stub
+	public CheckReceipt(ArrayList<Product> receipt) {
+		super(receipt);
+		
 	}
-	
 
-	public CheckReceipt(String name, String category, String description, double price, int checkNumber) {
-		super(name, category, description, price);
+	public CheckReceipt(ArrayList<Product> receipt, int checkNumber) {
+		super(receipt);
 		this.checkNumber = checkNumber;
 	}
-
 
 	public int getCheckNumber() {
 		return checkNumber;
@@ -25,8 +24,10 @@ public class CheckReceipt extends Product {
 	}
 
 	@Override
-	public String toString() {
-		return "Check Transaction Pending:" + price;
+	public void printReceipt() {
+		super.printReceipt();
+		System.out.println(checkNumber);
+
 	}
-	
+
 }

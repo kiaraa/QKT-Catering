@@ -11,7 +11,13 @@ public class Tester {
 		//for (Product prod : prodList) {
 		//	System.out.println(prod);
 		//}
-		Receipt receipt = new Receipt(prodList);
+//		Receipt receipt = new Receipt(prodList);
+//		receipt.printReceipt();
+//
+//		Receipt receipt = new CashReceipt(prodList, 2000);
+//		receipt.printReceipt();
+		
+		Receipt receipt = new CardReciept(prodList, 2343,"04/03/09", 344);
 		receipt.printReceipt();
 
 	}

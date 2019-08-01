@@ -1,39 +1,28 @@
 package co.grandcircus;
 
-public class CashReceipt extends Product {
-	
-	double total;
-	double change;
-	
-	
-	public CashReceipt(String name, String category, String description, double price) {
-		super(name, category, description, price);
-		// TODO Auto-generated constructor stub
-	}
-	
-	public CashReceipt(String name, String category, String description, double price, double total, double change) {
-		super(name, category, description, price);
-		this.total = total;
-		this.change = change;
+import java.util.ArrayList;
+
+public class CashReceipt extends Receipt {
+
+	double amountPaid;
+
+	public CashReceipt(ArrayList<Product> receipt, double amountPaid) {
+		super(receipt);
+		this.amountPaid = amountPaid;
 	}
 
-	
-	public double getTotal() {
-		return total;
+	public CashReceipt(ArrayList<Product> receipt) {
+		super(receipt);
+	// TODO Auto-generated constructor stub
 	}
-	public void setTotal(double total) {
-		this.total = total;
-	}
-	public double getChange() {
+	public double getChange(){
+		double change = amountPaid - super.total(this.getSubTotal());
 		return change;
 	}
-	public void setChange(double change) {
-		this.change = change;
-	}
-	
+
 	@Override
-	public String toString() {
-		return "Total: " + total + ", Change: " + change;
+	public void printReceipt () {
+		super.printReceipt();
+		System.out.println("Amount Paid: " + amountPaid + "\nChange: " + getChange());
 	}
-	
 }
