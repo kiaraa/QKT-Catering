@@ -26,22 +26,27 @@ public class OrderWindow {
 	public OrderWindow(Inventory inv, ArrayList<Product> custoList) {
 		this.inv = inv;
 		this.custoList = custoList;
-		frame = new JFrame();
+		frame = new JFrame("QKT Catering Order Form");
 		
 		JPanel panel = new JPanel(new SpringLayout());
 		splitPane = new JSplitPane();
 
 		String[] nameLabels = new String[12];
 		String[] descLabels = new String[12];
+		String[] priceLabels = new String[12];
 		for (int i = 0; i < custoList.size(); i++) {
 			nameLabels[i] = custoList.get(i).getName();
 			descLabels[i] = custoList.get(i).getDescription();
+			priceLabels[i] = Double.toString(custoList.get(i).getPrice());
 		}
 		
 		int numPairs = nameLabels.length;
 
 		//Create and populate the panel.
 		JPanel p = new JPanel(new SpringLayout());
+		ArrayList<JTextField> textFieldList = new ArrayList<>();
+		ArrayList<JButton> buttonList = new ArrayList<>();
+		
 		for (int i = 0; i < numPairs; i++) {
 			//Make name labels and description labels
 		    JLabel l = new JLabel(nameLabels[i] + ": ", JLabel.LEADING);
@@ -49,19 +54,28 @@ public class OrderWindow {
 		    JLabel descLabel = new JLabel(custoList.get(i).getDescription());
 		    l.setLabelFor(descLabel);
 		    p.add(descLabel);
+		    JLabel priceLabel = new JLabel(priceLabels[i]);
+		    p.add(priceLabel);
 		    
 		    // add Quantity labels and textfields
 		    JLabel qtLabel = new JLabel("Qt: ");
-		    JTextField qtField = new JTextField("0  ");
+		    JTextField qtField = new JTextField("0");
+		    textFieldList.add(qtField);
 		    qtLabel.setLabelFor(qtField);
 		    p.add(qtLabel);
 		    p.add(qtField);
 		    
 		    JButton addButton = new JButton("Add to Cart");
+		    buttonList.add(addButton);
 		    p.add(addButton);
 		    
 		}
 		//EVERYTHING ABOVE THIS LINE WORKS RIGHT NOW.
+		EventHandling handler = new EventHandling(buttonList, inv.readFromFile(),textFieldList);
+		
+		for(JButton button : buttonList) {
+			button.addActionListener(handler);
+		}
 		
 		JPanel bottomPanel = new JPanel();
 		JLabel instructions = new JLabel("Please select payment method", JLabel.LEADING);
@@ -84,15 +98,18 @@ public class OrderWindow {
         
         bottomPanel.add(radioPanel);
 
+        JButton checkoutButton = new JButton("Checkout");
+        bottomPanel.add(checkoutButton);
+        
 		//Lay out the panel.
 		SpringUtilities.makeCompactGrid(p,
-		                                numPairs, 5, //rows, cols
+		                                numPairs, 6, //rows, cols
 		                                6, 6,        //initX, initY
 		                                6, 6);       //xPad, yPad
 		
 		splitPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
 		splitPane.setDividerLocation(500);
-		bottomPanel.setSize(700, 100);
+		bottomPanel.setSize(700, 20);
 		panel.add(p);
 		
 		splitPane.setTopComponent(panel);
@@ -100,10 +117,12 @@ public class OrderWindow {
 		
 		//panel.add(p);
 		frame.add(splitPane);
-		frame.setPreferredSize(new Dimension(700, 800));
+		frame.setPreferredSize(new Dimension(700, 650));
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		
 	}
+	
+	
 }
