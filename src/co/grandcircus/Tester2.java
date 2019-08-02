@@ -66,7 +66,7 @@ public class Tester2 {
 			scan.nextLine(); //garbage line
 			
 			Receipt receipt = new CheckReceipt(CustoList, chkNum);
-			receipt.printReceipt();
+			receipt.printReceipt(); //TODO change either to string or int
 		}
 		else if (choice.equals("Cash")) {
 			System.out.println("How much money are you paying");
