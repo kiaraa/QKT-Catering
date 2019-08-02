@@ -2,6 +2,7 @@ package co.grandcircus;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -97,8 +98,12 @@ public class OrderWindow {
         radioPanel.add(checkButton);
         
         bottomPanel.add(radioPanel);
-
+        
+      HashMap <Product, Integer> custoMap = handler.custoMap;
+      CheckOutHandler checkHandle = new CheckOutHandler(custoMap);
+        
         JButton checkoutButton = new JButton("Checkout");
+        checkoutButton.addActionListener(checkHandle);
         bottomPanel.add(checkoutButton);
         
 		//Lay out the panel.
