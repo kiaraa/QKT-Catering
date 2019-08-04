@@ -1,5 +1,6 @@
 package co.grandcircus;
 
+import java.awt.Dimension;
 import java.util.HashMap;
 
 import javax.swing.JFrame;
@@ -44,7 +45,7 @@ public CardCheckoutWindow(HashMap<Product, Integer> custoMap) {
             6, 6);       //xPad, yPad
 	
 	frame.add(panel);
-	
+	frame.setPreferredSize(new Dimension(300,125));
 	frame.pack();
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.setVisible(true);
