@@ -34,6 +34,9 @@ public class CheckOutHandler implements ActionListener {
 		else if(b.getText().equals("Cash")){
 			new CashCheckoutWindow(custoMap);
 		}
+		else if(b.getText().equals("Check")) {
+			new CheckCheckoutWindow(custoMap);
+		}
 			
 		
 		
