@@ -100,7 +100,7 @@ public class OrderWindow {
         bottomPanel.add(radioPanel);
         
       HashMap <Product, Integer> custoMap = handler.custoMap;
-      CheckOutHandler checkHandle = new CheckOutHandler(custoMap);
+      CheckOutHandler checkHandle = new CheckOutHandler(custoMap,bGroup);
         
         JButton checkoutButton = new JButton("Checkout");
         checkoutButton.addActionListener(checkHandle);
