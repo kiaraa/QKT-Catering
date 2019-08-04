@@ -17,6 +17,8 @@ public class CashCheckoutWindow {
 	JPanel panel = new JPanel(new SpringLayout());
 	JLabel cashLabel = new JLabel("Cash amount: ");
 	JTextField cashField = new JTextField();
+	JLabel total = new JLabel();
+	JLabel totalLabel = new JLabel("Amount due: $");
 
 	private HashMap<Product, Integer> custoMap;
 	
@@ -24,18 +26,33 @@ public CashCheckoutWindow(HashMap<Product, Integer> custoMap) {
 	//SpringUtilities.makeCompactGrid(panel, 3, 2, 6, 6, 6, 6);
 	this.custoMap = custoMap;
 	
+	String totalString = String.format("%.2f", getTotal());
+	total.setText(totalString);
+	
+	panel.add(totalLabel);
+	panel.add(total);
 	panel.add(cashLabel);
 	panel.add(cashField);
 	
 	SpringUtilities.makeCompactGrid(panel,
-            1, 2, //rows, cols
+            2, 2, //rows, cols
             6, 6,        //initX, initY
             6, 6);       //xPad, yPad
 	
 	frame.add(panel);
-	frame.setPreferredSize(new Dimension(175,60));
+	frame.setPreferredSize(new Dimension(175,80));
 	frame.pack();
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.setVisible(true);
+}
+
+public double getTotal() {
+	double sum = 0;
+	for (Product prod : custoMap.keySet()) {
+		int quantity = custoMap.get(prod);
+		double costOfItems = prod.getPrice() * quantity;
+		sum += costOfItems;
+	}
+	return sum * 1.06; //accounting for tax, which will be shown in the receipt
 }
 }
