@@ -16,13 +16,20 @@ public class CashReceiptWindow extends ReceiptWindow {
 	}
 	
 	public void addCashString() {
+		
+		JPanel cashInfoPanel = new JPanel();
+		
 		JPanel cashPanel = new JPanel();
 		JLabel cashLabel = new JLabel("Amount tendered: " + amtPaid);
 		cashPanel.add(cashLabel);
 		double total = total(getSubTotal());
-		double change = total - Double.parseDouble(amtPaid);
-		JLabel changeLabel = new JLabel("Change due: " + Double.toString(change));
+		double change = Double.parseDouble(amtPaid) - total;
+		JLabel changeLabel = new JLabel("Change due: " + String.format("%.2f", change));
 		cashPanel.add(changeLabel);
-		bigPanel.add(cashPanel);
+		
+		cashInfoPanel.add(cashLabel);
+		cashInfoPanel.add(changeLabel);
+		bigPanel.add(cashInfoPanel);
+		
 	}
 }

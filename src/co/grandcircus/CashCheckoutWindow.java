@@ -47,7 +47,7 @@ public class CashCheckoutWindow {
 					JOptionPane.showMessageDialog(panel, "Please give more cash than you owe.", "Error",
 							JOptionPane.ERROR_MESSAGE);
 				} else {
-					new ReceiptWindow(custoMap);
+					new CashReceiptWindow(custoMap, cashField.getText());
 				}
 			}
 		});
