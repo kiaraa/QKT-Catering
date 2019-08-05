@@ -8,6 +8,7 @@ import java.util.HashMap;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
@@ -57,9 +58,14 @@ public CheckCheckoutWindow(HashMap<Product, Integer> custoMap) {
 	
 	checkoutButton.addActionListener(new ActionListener(){  
         public void actionPerformed(ActionEvent e){  
-        	String checkNum = checkField.getText();
-        	System.out.println(checkNum);
-            new CheckReceiptWindow(custoMap, checkNum);
+        	
+        	if (!checkField.getText().matches("\\d{9}")) {
+				JOptionPane.showMessageDialog(panel, "Check number must be 9 digits", "Error", JOptionPane.ERROR_MESSAGE);
+			} else {
+				String checkNum = checkField.getText();
+				System.out.println(checkNum);
+				new CheckReceiptWindow(custoMap, checkNum);
+			}	
         }  
     });
 }
