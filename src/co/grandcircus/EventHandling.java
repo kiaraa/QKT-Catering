@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class EventHandling implements ActionListener {
@@ -43,9 +45,16 @@ public class EventHandling implements ActionListener {
 	public int getQuan(JButton b) {
 		int i = bList.indexOf(b);
 		JTextField correctField = fieldList.get(i);
-		int quant = Integer.parseInt(correctField.getText());
-		System.out.println(quant);
-		return quant;
+		
+		int quant;
+		try {
+			quant = Integer.parseInt(correctField.getText());
+			System.out.println(quant);
+			return quant;
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(new JPanel(), "Please enter an integer value.", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+		return 0; //THIS WILL PROBABLY BE THE SOURCE OF ANY PROBLEMS HERE
 	}
 
 }
