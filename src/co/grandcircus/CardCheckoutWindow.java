@@ -23,12 +23,11 @@ public class CardCheckoutWindow {
 	JLabel cardNum = new JLabel("Card Number: ");
 	JLabel cardExpire = new JLabel("Card Expiration Date: ");
 	JLabel cardCVV = new JLabel("Enter card CVV: ");
-	JTextField cardNum1 = new JTextField();
+	JTextField cardNumField = new JTextField();
 	JLabel emptyLabel = new JLabel();
 	JButton checkoutButton = new JButton("Checkout");
-
-	JTextField cardExpire1 = new JTextField();
-	JTextField cardCVV1 = new JTextField();
+	JTextField cardExpireField = new JTextField();
+	JTextField cardCVVField = new JTextField();
 	private HashMap<Product, Integer> custoMap;
 
 	public CardCheckoutWindow(HashMap<Product, Integer> custoMap) {
@@ -42,11 +41,11 @@ public class CardCheckoutWindow {
 		panel.add(total);
 
 		panel.add(cardNum);
-		panel.add(cardNum1);
+		panel.add(cardNumField);
 		panel.add(cardExpire);
-		panel.add(cardExpire1);
+		panel.add(cardExpireField);
 		panel.add(cardCVV);
-		panel.add(cardCVV1);
+		panel.add(cardCVVField);
 		panel.add(emptyLabel);
 		panel.add(checkoutButton);
 
@@ -57,9 +56,9 @@ public class CardCheckoutWindow {
 					JOptionPane.showMessageDialog(panel, "Card number must be 16 digits, exp date must be in MM/YY format, CVV must be 3 digits.", "Error",
 							JOptionPane.ERROR_MESSAGE);
 				} else {
-					String cardNum = cardNum1.getText();
-					String expDate = cardExpire1.getText();
-					String CVV = cardCVV1.getText();
+					String cardNum = cardNumField.getText();
+					String expDate = cardExpireField.getText();
+					String CVV = cardCVVField.getText();
 					new CardReceiptWindow(custoMap, cardNum, expDate, CVV);
 				}	
 			}
@@ -88,9 +87,9 @@ public class CardCheckoutWindow {
 	
 	public boolean hasValidInput() {
 		boolean mostlyValid;
-		boolean validCardNum = cardNum1.getText().matches("\\d{16}");
-		boolean validExpDate = cardExpire1.getText().matches("\\d{2}\\/\\d{2}");
-		boolean validCVV = cardCVV1.getText().matches("\\d{3}");
+		boolean validCardNum = cardNumField.getText().matches("\\d{16}");
+		boolean validExpDate = cardExpireField.getText().matches("\\d{2}\\/\\d{2}");
+		boolean validCVV = cardCVVField.getText().matches("\\d{3}");
 		if (validCardNum && validCVV) {
 			mostlyValid = true;
 		}
