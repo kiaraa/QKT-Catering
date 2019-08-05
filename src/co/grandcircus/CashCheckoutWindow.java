@@ -3,6 +3,7 @@ package co.grandcircus;
 import java.awt.Dimension;
 import java.util.HashMap;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -19,6 +20,8 @@ public class CashCheckoutWindow {
 	JTextField cashField = new JTextField();
 	JLabel total = new JLabel();
 	JLabel totalLabel = new JLabel("Amount due: $");
+	JButton checkoutButton = new JButton("Checkout");
+	JLabel emptyLabel = new JLabel();
 
 	private HashMap<Product, Integer> custoMap;
 	
@@ -33,14 +36,16 @@ public CashCheckoutWindow(HashMap<Product, Integer> custoMap) {
 	panel.add(total);
 	panel.add(cashLabel);
 	panel.add(cashField);
+	panel.add(emptyLabel);
+	panel.add(checkoutButton);
 	
 	SpringUtilities.makeCompactGrid(panel,
-            2, 2, //rows, cols
+            3, 2, //rows, cols
             6, 6,        //initX, initY
             6, 6);       //xPad, yPad
 	
 	frame.add(panel);
-	frame.setPreferredSize(new Dimension(175,80));
+	frame.setPreferredSize(new Dimension(210,115));
 	frame.pack();
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.setVisible(true);
