@@ -1,6 +1,8 @@
 package co.grandcircus;
 
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 import javax.swing.JButton;
@@ -21,7 +23,7 @@ public class CheckCheckoutWindow {
 	JPanel panel = new JPanel(new SpringLayout());
 	JLabel checkLabel = new JLabel("Check number: ");
 	JTextField checkField = new JTextField();
-	JButton checkoutbutton = new JButton("Checkout");
+	JButton checkoutButton = new JButton("Checkout");
 	JLabel emptyLabel = new JLabel();
 
 	private HashMap<Product, Integer> custoMap;
@@ -38,7 +40,7 @@ public CheckCheckoutWindow(HashMap<Product, Integer> custoMap) {
 	panel.add(checkLabel);
 	panel.add(checkField);
 	panel.add(emptyLabel);
-	panel.add(checkoutbutton);
+	panel.add(checkoutButton);
 	
 	
 	
@@ -52,6 +54,14 @@ public CheckCheckoutWindow(HashMap<Product, Integer> custoMap) {
 	frame.pack();
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.setVisible(true);
+	
+	checkoutButton.addActionListener(new ActionListener(){  
+        public void actionPerformed(ActionEvent e){  
+        	String checkNum = checkField.getText();
+        	System.out.println(checkNum);
+            new CheckReceiptWindow(custoMap, checkNum);
+        }  
+    });
 }
 
 public double getTotal() {

@@ -1,6 +1,8 @@
 package co.grandcircus;
 
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 import javax.swing.JButton;
@@ -38,6 +40,12 @@ public CashCheckoutWindow(HashMap<Product, Integer> custoMap) {
 	panel.add(cashField);
 	panel.add(emptyLabel);
 	panel.add(checkoutButton);
+	
+	checkoutButton.addActionListener(new ActionListener(){  
+        public void actionPerformed(ActionEvent e){  
+            new ReceiptWindow(custoMap);
+        }  
+    });
 	
 	SpringUtilities.makeCompactGrid(panel,
             3, 2, //rows, cols
