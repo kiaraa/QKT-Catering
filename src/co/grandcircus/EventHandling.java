@@ -38,7 +38,7 @@ public class EventHandling implements ActionListener {
 
 	public Product getProduct(JButton b) {
 		int i = bList.indexOf(b);
-		System.out.println(prodList.get(i));
+		//System.out.println(prodList.get(i));
 		return prodList.get(i);
 	}
 	
